@@ -1,0 +1,55 @@
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss -->
+<!-- ============================================================== -->
+<aside class="left-sidebar">
+  <!-- Sidebar scroll -->
+  <div class="scroll-sidebar">
+    <!-- Sidebar navigation -->
+    <nav class="sidebar-nav">
+      <ul id="sidebarnav">
+        <li class="nav-small-cap">Usuarios</li>
+        <li class="nav-devider"></li>
+        <div class="menu-boton" *ngFor="let menu of _sidebar.menu">
+          <ul>
+            <li >
+              <a [routerLink]="menu.url" routerLinkActive="active"  class=" waves-effect waves-dark" aria-expanded="false">
+                <img class="icono-menu" [src]="menu.icono">
+                <span class="hide-menu">{{ menu.titulo }} </span>
+              </a>
+            </li>
+            <li class="nav-devider"></li>
+          </ul>
+        </div>
+          <li class="nav-small-cap">Proyectos</li>
+          <li class="nav-devider"></li>
+            <div class="menu-boton" *ngFor="let menu of _sidebar.menu2">
+              <ul>
+                <li>
+                  <a [routerLink]="menu.url" routerLinkActive="active" class=" waves-effect waves-dark" aria-expanded="false">
+                    <img class="icono-menu" [src]="menu.icono">
+                    <span class="hide-menu">{{ menu.titulo }} </span>
+                  </a>
+                </li>
+                <li class="nav-devider"></li>
+              </ul>
+            </div>
+            <div class="menu-boton">
+              <ul> 
+                <li>
+                  <a (click)="_usuarioService.logout()" class=" waves-effect waves-dark" aria-expanded="false">
+                    <img class="icono-menu" src="assets/images/icon/exit.svg">
+                    <span class="hide-menu">Salir</span>
+                  </a>
+                </li>
+                <li class="nav-devider"></li>
+              </ul>
+            </div>
+      </ul>
+    </nav>
+    <!-- End Sidebar navigation -->
+  </div>
+  <!-- End Sidebar scroll -->
+</aside>
+<!-- ============================================================== -->
+<!-- End Left Sidebar - style you can find in sidebar.scss -->
+<!-- ============================================================== -->

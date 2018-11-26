@@ -1,0 +1,40 @@
+<div class="cerrar">
+  <i (click)="onNoClick()" class="mdi mdi-close-circle-outline pointer"></i>
+</div>
+<h3 mat-dialog-title class="text-center texto-principal">Nuevo Proyecto</h3>
+<div mat-dialog-content>
+  <form
+    ngNativeValidate
+    #f="ngForm"
+    (ngSubmit)="guardar(f.value)"
+    class="form-horizontal form-material">
+    <div class="form-group mt-4">
+      <div class="col-xs-12 col-md-12">
+        <label>Nombre</label>
+        <input
+          ngModel
+          name="text"
+          class="form-control"
+          type="text"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-12 col-md-12" style="text-align: center;">
+        <label class="text-center">Imagen</label><br />
+        <img *ngIf="imagenActual" [src]="imagenActual" class="w150 mb-2" />
+        <input (change)="seleccionImagen($event.target.files[0])" type="file" />
+      </div>
+    </div>
+
+    <div class="form-group text-left m-t-20">
+      <div class="col-xs-12 col-md-12 text-center">
+        <button mat-button class="btn boton-mix" style="padding: 7px 50px;" type="submit" [disabled]="!imagenSubir">
+          <i *ngIf="_botonService.cargar" class="fa fa-refresh fa-spin " ></i> Crear
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions></div>

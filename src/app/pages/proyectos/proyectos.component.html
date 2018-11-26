@@ -1,0 +1,240 @@
+<button (click)="openDialog()" class="btn crear-proyecto animated fadeIn" type="submit">
+  Agregar proyecto</button>
+
+
+<div class="row animated fadeIn" *ngIf="cargando">
+  <div class="col-sm-12">
+    <div class="alert text-center">
+      <strong>Cargando</strong> <br />
+      <i class="fa fa-refresh fa-spin fa-2x"></i> <br />
+      <span>Espere por favor</span>
+    </div>
+  </div>
+</div>
+
+<div class="row animated fadeIn" *ngFor="let button of buttons">
+  <div class="col-lg-12">
+    <div class="card card-principal">
+      <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="accordion nav-accordion">
+        <ngb-panel>
+          <ng-template ngbPanelTitle>
+            <div class="card-head">
+              <h4 class="card-title" style="margin-bottom: 0;">
+                {{ button.text }}
+              </h4>
+              <div class="acciones">
+                <i class="fa fa-pencil mr-2 fa-lg pointer" style="color: #60ff43;"></i>
+                <i (click)="openDialogOpciones(button._id)" class="fa fa-plus-circle mr-2 fa-lg pointer" style="color: #2911ff;"></i>
+                <i class="fa fa-trash-o mr-2 fa-lg pointer" style="color: #ff3838;"></i>
+              </div>
+            </div>
+          </ng-template>
+        <ng-template ngbPanelContent>
+            <div class="card-body">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body" style="padding: 0;">
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Presentación</th>
+                            <th>Formato</th>
+                            <th>Diapositivas</th>
+                            <th class="text-nowrap"></th>
+                            <th class="text-nowrap"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngIf="button.slide != null">
+                            <td>Nombre del archivo</td>
+                            <td>PPT</td>
+                            <td>12</td>
+                            <td>VIDEO</td>
+                            <td class="text-nowrap">
+                              <a
+                                href="#"
+                                data-toggle="tooltip"
+                                data-original-title="Edit"
+                              >
+                                <i
+                                  class="fa fa-pencil  m-r-10"
+                                  style="color: #60ff43;"
+                                ></i>
+                              </a>
+                              <a
+                                href="#"
+                                data-toggle="tooltip"
+                                data-original-title="Close"
+                              >
+                                <i
+                                  class="fa fa-trash-o text-danger"
+                                  style="color: #ff3838;"
+                                ></i>
+                              </a>
+                            </td>
+                          </tr>
+                          <tr *ngIf="button.url != null">
+                            <td>{{button.url.direccion}}</td>
+                            <td>WEB</td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-nowrap">
+                              <a
+                                href="#"
+                                data-toggle="tooltip"
+                                data-original-title="Edit"
+                              >
+                                <i
+                                  class="fa fa-pencil  m-r-10"
+                                  style="color: #60ff43;"
+                                ></i>
+                              </a>
+                              <a
+                                href="#"
+                                data-toggle="tooltip"
+                                data-original-title="Close"
+                              >
+                                <i
+                                  class="fa fa-trash-o text-danger"
+                                  style="color: #ff3838;"
+                                ></i>
+                              </a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="submenu" *ngIf="button.menu != null">
+                      
+                      <div class="section">
+                      
+                      <h4 class="card-title">
+                      </h4> 
+                      </div>
+                      <div class="subproyecto-seccion">
+                        <button (click)="openSubDialog(button.menu._id)" class="btn crear-subproyecto animated fadeIn" type="submit">
+                            Agregar Subproyecto</button>
+                      </div>
+
+                      <div class="row animated fadeIn" *ngFor="let button2 of button.menu.button">
+                        <div class="col-lg-12">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="card-head" style="align-items: center;">
+                                <h4 class="card-title" style="margin-bottom: 0;">
+                                  {{ button2.text }}
+                                </h4>
+                                    
+                                <div class="acciones">
+                                  <i
+                                    class="fa fa-pencil mr-2 fa-lg"
+                                    style="color: #60ff43;"
+                                  ></i>
+                                  <i (click)="openDialogOpciones(button2._id)"
+                                    class="fa fa-plus-circle mr-2 fa-lg"
+                                    style="color: #2911ff;"
+                                  ></i>
+                                  <i
+                                    class="fa fa-trash-o mr-2 fa-lg"
+                                    style="color: #ff3838;"
+                                  ></i>
+                                </div>
+                              </div>
+                              <hr />
+                              <div class="col-12">
+                                <div class="card">
+                                  <div class="card-body" style="padding: 0;">
+                                    <div class="table-responsive">
+                                      <table class="table table-striped">
+                                        <thead>
+                                          <tr>
+                                            <th>Presentación</th>
+                                            <th>Formato</th>
+                                            <th>Diapositivas</th>
+                                            <th class="text-nowrap"></th>
+                                            <th class="text-nowrap"></th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr *ngIf="button2.slide != null">
+                                            <td>Nombre del archivo</td>
+                                            <td>PPT</td>
+                                            <td>12</td>
+                                            <td>VIDEO</td>
+                                            <td class="text-nowrap">
+                                              <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-original-title="Edit"
+                                              >
+                                                <i
+                                                  class="fa fa-pencil  m-r-10"
+                                                  style="color: #60ff43;"
+                                                ></i>
+                                              </a>
+                                              <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-original-title="Close"
+                                              >
+                                                <i
+                                                  class="fa fa-trash-o text-danger"
+                                                  style="color: #ff3838;"
+                                                ></i>
+                                              </a>
+                                            </td>
+                                          </tr>
+                                          <tr *ngIf="button2.url != null">
+                                            <td>pagina</td>
+                                            <td>WEB</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="text-nowrap">
+                                              <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-original-title="Edit"
+                                              >
+                                                <i
+                                                  class="fa fa-pencil  m-r-10"
+                                                  style="color: #60ff43;"
+                                                ></i>
+                                              </a>
+                                              <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-original-title="Close"
+                                              >
+                                                <i
+                                                  class="fa fa-trash-o text-danger"
+                                                  style="color: #ff3838;"
+                                                ></i>
+                                              </a>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+          </div>
+        </div>
+      </div>
+
+
+
+             
